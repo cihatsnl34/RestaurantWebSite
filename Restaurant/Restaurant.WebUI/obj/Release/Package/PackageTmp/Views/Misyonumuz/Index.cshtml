@@ -1,0 +1,32 @@
+﻿@model Restaurant.Entity.Entity.About
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{Html.RenderAction("PartialMisyonumuzConstantValue", "Misyonumuz");}
+<section class="inner-section about-company">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="about-content">
+                    <h2>@Model.Title</h2>
+                    <p>
+                        @if (Model.Description.Length < 250)
+                        {
+                            @Html.Raw(Model.Description)
+                        }
+                        else
+                        {
+                            @Html.Raw(Model.Description.Substring(0, 250))
+                        }
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-img">
+                    <img src="~/File/Abouts/@Model.File" alt="@Model.Title">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

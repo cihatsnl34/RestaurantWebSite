@@ -1,0 +1,209 @@
+﻿@model Restaurant.Entity.Entity.BasindaBiz
+
+@{
+    ViewBag.Title = "AddBasindaBiz";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="title">
+                        <h3>Yeni Basinda Biz Ekle</h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 text-right">
+                    <img src="~/Areas/Admin/Context/mekasoftware/180x180-M.png" alt="Meka Software" width="50" />
+                </div>
+            </div>
+        </div>
+        @if (ViewBag.Mesaj != null)
+        {
+            <div class="pd-20 card-box mb-30">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <h4 class="text-blue h4">Hata Mesajı</h4>
+                    </div>
+                </div>
+                <div>
+                    <p>@ViewBag.Mesaj</p>
+                </div>
+            </div>
+        }
+        <div class="pd-20 card-box mb-30">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <h4 class="text-blue h4">Yeni Basinda Biz Ekle</h4>
+                </div>
+            </div>
+            <!-- Buraya Form Kısmını Ekle -->
+            @using (Html.BeginForm("AddBasindaBiz", "BasindaBiz", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Başlık</label>
+                        <div class="col-md-12">
+                            <input type="text" name="Title" class="form-control" required placeholder="Lütfen Başlık Giriniz" maxlength="110" />
+                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Açıklama</label>
+                        <div class="col-md-12">
+                            @Html.TextAreaFor(model => model.Content)
+                            @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Kısa Açıklama</label>
+                        <div class="col-md-12">
+                            <input type="text" name="ShortDescription" class="form-control" required placeholder="Kısa Açıklama Giriniz" />
+                            @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Resim</label>
+                        <div class="col-md-12">
+                            <input type="file" name="File" class="form-control" />
+                            <p style="color:darkred;">Resim Boyutu(980x620)</p>
+                            @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Seo Anahtar Kelime</label>
+                        <div class="col-md-12">
+                            <input type="text" name="seoKeywords" class="form-control" required placeholder="Lütfen Seo Anahtar Kelime Giriniz" maxlength="110" />
+                            @Html.ValidationMessageFor(model => model.seoKeywords, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Seo Açıklama</label>
+                        <div class="col-md-12">
+                            <input type="text" name="seoKDescription" class="form-control" required placeholder="Lütfen Seo Açıklama Giriniz" maxlength="170" />
+                            @Html.ValidationMessageFor(model => model.seoKDescription, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Seo Konu</label>
+                        <div class="col-md-12">
+                            <input type="text" name="seoSubject" class="form-control" required placeholder="Lütfen Seo Konu Giriniz" maxlength="110" />
+                            @Html.ValidationMessageFor(model => model.seoSubject, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Seo Twitter Başlık</label>
+                        <div class="col-md-12">
+                            <input type="text" name="seoTwitterTitle" class="form-control" required placeholder="Lütfen Seo Twitter Başlık Giriniz" maxlength="110" />
+                            @Html.ValidationMessageFor(model => model.seoTwitterTitle, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                            <label class="control-label col-md-2">Seo Twitter Anahtar Kelime</label>
+                            <div class="col-md-12">
+                                <input type="text" name="SeoTwitterKeywords" class="form-control" required placeholder="Lütfen Seo Twitter Anahtar Kelime Giriniz" maxlength="110" />
+                                @Html.ValidationMessageFor(model => model.SeoTwitterKeywords, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Seo Twitter Açıklama</label>
+                        <div class="col-md-12">
+                            <input type="text" name="seoTwitterDescription" class="form-control" required placeholder="Lütfen Seo Twitter Açıklama Giriniz" maxlength="170" />
+                            @Html.ValidationMessageFor(model => model.seoTwitterDescription, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Seo Twitter URL</label>
+                        <div class="col-md-12">
+                            <input type="text" name="seoTwitterUrl" class="form-control" required placeholder="Seo Twitter URL" maxlength="110" />
+                            @Html.ValidationMessageFor(model => model.seoTwitterUrl, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Seo Facebook Başlık</label>
+                        <div class="col-md-12">
+                            <input type="text" name="seoFacebookTitle" class="form-control" required placeholder="Lütfen Seo Facebook Başlık Giriniz" maxlength="110" />
+                            @Html.ValidationMessageFor(model => model.seoFacebookTitle, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                            <label class="control-label col-md-2">Seo Facebook Anahtar Kelime</label>
+                            <div class="col-md-12">
+                                <input type="text" name="SeoFacebookKeywrods" class="form-control" required placeholder="Lütfen Seo Facebook Anahtar Kelime Giriniz" maxlength="110" />
+                                @Html.ValidationMessageFor(model => model.SeoFacebookKeywords, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Seo Facebook Açıklama</label>
+                        <div class="col-md-12">
+                            <input type="text" name="seoFacebookDescription" class="form-control" required placeholder="Lütfen Seo Facebook Açıklama Giriniz" maxlength="170" />
+                            @Html.ValidationMessageFor(model => model.seoFacebookDescription, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Seo Facebook URL</label>
+                        <div class="col-md-12">
+                            <input type="text" name="seoFacebookUrl" class="form-control" required placeholder="Lütfen Seo Facebook URL Giriniz" maxlength="110" />
+                            @Html.ValidationMessageFor(model => model.seoFacebookUrl, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Seo Yayımcı</label>
+                        <div class="col-md-12">
+                            <input type="text" name="seoPublisher" class="form-control" required placeholder="Lütfen Seo Yayımcı Giriniz" maxlength="110" />
+                            @Html.ValidationMessageFor(model => model.seoPublisher, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Seo Sınıflandırma</label>
+                        <div class="col-md-12">
+                            <input type="text" name="seoClassification" class="form-control" required placeholder="Lütfen Seo Sınıflandırma Giriniz" maxlength="110" />
+                            @Html.ValidationMessageFor(model => model.seoClassification, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-12">
+                            <div class="col-md-offset-2 col-md-12">
+                                <button type="submit" class="btn btn-outline-success"><i class="fa fa-check"></i> Yeni Basında Biz Ekle</button>
+                                <a href="/Admin/Dashboard/BasindaBiz" class="btn btn-outline-dark"><i class="fa fa-reply-all"></i> Listeye Geri Dön</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <!--Form bitiş-->
+
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Editor/ckeditor/ckeditor.js"></script>
+    <script src="~/Editor/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript">
+        var editor = CKEDITOR.instances['Content'];
+        if (editor) { editor.destroy(true); }
+        CKEDITOR.replace('Content', {
+            enterMode: CKEDITOR.ENTER_BR,
+        });
+    CKFinder.setupCKEditor(null, '@Url.Content("~/Editor/ckfinder/")');
+    </script>
+}

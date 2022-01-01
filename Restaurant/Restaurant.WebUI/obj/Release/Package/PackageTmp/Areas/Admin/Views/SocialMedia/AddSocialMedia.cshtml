@@ -1,0 +1,96 @@
+﻿@model Restaurant.Entity.Entity.SocialMedia
+
+@{
+    ViewBag.Title = "AddSocialMedia";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="title">
+                        <h3>Yeni Sosyal Medya Ekle</h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 text-right">
+                    <img src="~/Areas/Admin/Context/mekasoftware/180x180-M.png" alt="Meka Software" width="50" />
+                </div>
+            </div>
+        </div>
+        @if (ViewBag.Mesaj != null)
+        {
+            <div class="pd-20 card-box mb-30">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <h4 class="text-blue h4">Hata Mesajı</h4>
+                    </div>
+                </div>
+                <div>
+                    <p>@ViewBag.Mesaj</p>
+                </div>
+            </div>}
+        <div class="pd-20 card-box mb-30">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <h4 class="text-blue h4">Yeni Sosyal Medya Ekle</h4>
+                </div>
+            </div>
+            <!-- Buraya Form Kısmını Ekle -->
+            @using (Html.BeginForm("AddSocialMedia", "SocialMedia", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Başlık</label>
+                        <div class="col-md-12">
+                            <input type="text" name="Title" class="form-control" required placeholder="Lütfen Başlık Giriniz" maxlength="110" />
+                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">URL</label>
+                        <div class="col-md-12">
+                            <input type="text" name="Url" class="form-control" required placeholder="Lütfen URL Giriniz" maxlength="110" />
+                            @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Icon</label>
+                        <div class="col-md-12">
+                            <select class="custom-select2 form-control" name="Icon" style="width: 100%; height: 38px;">
+                                <optgroup label="Lütfen Sayfa Seçiniz">
+                                    <option value="icofont-facebook">facebook</option>
+                                    <option value="icofont-instagram">instagram</option>
+                                    <option value="icofont-pinterest">pinterest</option>
+                                    <option value="icofont-twitter">twitter</option>
+                                    <option value="icofont-linkedin">linkedin</option>
+                                </optgroup>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.Icon, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-12">
+                            <div class="col-md-offset-2 col-md-12">
+                                <button type="submit" class="btn btn-outline-success"><i class="fa fa-check"></i> Yeni Sosyal Medya Ekle</button>
+                                <a href="/Admin/Dashboard/SocialMedia" class="btn btn-outline-dark"><i class="fa fa-reply-all"></i> Listeye Geri Dön</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>}
+
+            <!--Form bitiş-->
+        </div>
+    </div>
+</div>

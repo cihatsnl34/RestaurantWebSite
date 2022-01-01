@@ -1,0 +1,165 @@
+﻿@model Restaurant.Entity.Entity.Slider
+
+@{
+    ViewBag.Title = "UpdateSlider";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="title">
+                        <h3>Yeni Slider Güncelle</h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 text-right">
+                    <img src="~/Areas/Admin/Context/mekasoftware/180x180-M.png" alt="Meka Software" width="50" />
+                </div>
+            </div>
+        </div>
+        @if (ViewBag.Mesaj != null)
+        {
+            <div class="pd-20 card-box mb-30">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <h4 class="text-blue h4">Hata Mesajı</h4>
+                    </div>
+                </div>
+                <div>
+                    <p>@ViewBag.Mesaj</p>
+                </div>
+            </div>
+        }
+        <div class="pd-20 card-box mb-30">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <h4 class="text-blue h4">Yeni Slider Güncelle</h4>
+                </div>
+            </div>
+            <!-- Buraya Form Kısmını Ekle -->
+            @using (Html.BeginForm("UpdateSlider", "Slider", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Başlık</label>
+                <div class="col-md-12">
+                    <input type="text" name="Title" value="@Model.Title" class="form-control" required placeholder="Lütfen Başlık Giriniz" maxlength="170" />
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Açıklama</label>
+                <div class="col-md-12">
+                    <input type="text" name="Description" value="@Model.Description" class="form-control" required placeholder="Lütfen Açıklama Giriniz" maxlength="170" />
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">File</label>
+                <div class="col-md-12">
+                    <input type="file" name="File" value="@Model.File" class="form-control" placeholder="Lütfen Resim Giriniz" maxlength="170" />
+                    <p style="color:darkred;">Resim Boyutu(1920x1200)</p>
+                    @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Resim Açıklama</label>
+                <div class="col-md-12">
+                    <input type="text" name="FileAlt" value="@Model.FileAlt" class="form-control" required placeholder="Lütfen Resim Açıklama Giriniz" maxlength="170" />
+                    @Html.ValidationMessageFor(model => model.FileAlt, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-12">Yazı Sol</label>
+                        <div class="col-md-12">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Left) Aktif | Pasif
+                                @Html.ValidationMessageFor(model => model.Left, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-12">Yazı Orta</label>
+                        <div class="col-md-12">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Center) Aktif | Pasif
+                                @Html.ValidationMessageFor(model => model.Center, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-12">Yazı Sağ</label>
+                        <div class="col-md-12">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Right) Aktif | Pasif
+                                @Html.ValidationMessageFor(model => model.Right, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Sayfa Url</label>
+                <div class="col-md-12">
+                    <input type="text" name="PageUrl" value="@Model.PageUrl" class="form-control" placeholder="Anasayfa ='/', Hakkımızda='hakkimizda' https://doybox.com.tr/ son / sonrasındaki url alıp yazınız..." maxlength="170" />
+                    @Html.ValidationMessageFor(model => model.PageUrl, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Ürün Url</label>
+                <div class="col-md-12">
+                    <input type="text" name="ProductUrl" value="@Model.ProductUrl" class="form-control" placeholder="Mercimek Çorbası ='mercimek-corbasi', Kuzu Tandır='kuzu-tandir' https://doybox.com.tr/urunler/ son /urunler/ sonrasındaki url alıp yazınız..." maxlength="170" />
+                    @Html.ValidationMessageFor(model => model.ProductUrl, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Lezzet Url</label>
+                <div class="col-md-12">
+                    <input type="text" name="LezzetUrl" value="@Model.LezzetUrl" class="form-control" placeholder="Çorba ='corba', Tatlı='tatli' https://doybox.com.tr/urunler/ son /urunler/ sonrasındaki url alıp yazınız..." maxlength="170" />
+                    @Html.ValidationMessageFor(model => model.LezzetUrl, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Aktif Durumu</label>
+                <div class="col-md-12">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.IsActive) Aktif | Pasif
+                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" class="btn btn-outline-success"><i class="fa fa-check"></i> Yeni Slider Güncelle</button>
+                        <a href="/Admin/Dashboard/Slider" class="btn btn-outline-dark"><i class="fa fa-reply-all"></i> Listeye Geri Dön</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+            }
+            <!--Form bitiş-->
+        </div>
+    </div>
+</div>

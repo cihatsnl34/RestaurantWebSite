@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.SocialMedia>
+ 
+<ul class="footer-social">
+    @foreach (var item in Model)
+    {
+        <li><a class="@item.Icon" target="_blank" href="@item.Url"></a></li>
+        @*<a href="@item.Url" class="@item.Title" rel="nofollow"><i class="@item.Icon"></i></a>*@
+    }
+
+</ul>
+

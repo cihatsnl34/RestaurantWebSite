@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.Video>
+@if (Model.Where(x => x.IsActive == true).Count() > 0)
+{
+    <section class="section recent-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Isıt Ye ! Videolarımız</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-2 row-cols-md-4 row-cols-lg-4 row-cols-xl-3">
+                @foreach (var item in Model)
+                {
+                    <div class="col">
+                        <div class="product-card">
+                            <div class="product-media">
+                                <a class="product-image"><img src="~/File/Videos/@item.File" alt="product"></a>
+                                <div class="product-widget">
+                                    <a title="@item.File" href="@item.Url" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-btn-25">
+                        <a href="/videolar" class="btn btn-outline">
+                            <i class="fas fa-eye"></i><span>Devamını Gör</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

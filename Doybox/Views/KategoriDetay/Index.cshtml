@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{Html.RenderAction("PartialKategoriDetayConstantValue", "KategoriDetay");}
+<section class="inner-section shop-part">
+    <div class="container">
+        <div class="col-lg-12">
+            <div class="section-heading">
+                <h2>Lezzetlerimiz - @Model.FirstOrDefault().ProductCategory.Title</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row content-reverse">
+            <div class="col-lg-12">
+                <div class="row">
+                </div>
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col">
+                            <div class="product-card">
+                                <div class="product-media">
+                                    <div class="product-label">@if (item.Feature != null) { <label class="label-text new">@item.Feature</label>}</div><button class="product-wish wish">
+                                    </button><a class="product-image" href="/urunler/@item.Slug">
+                                        <img src="~/File/Products/@item.File"
+                                             alt="@item.Title">
+                                    </a>
+                                </div>
+                                <div class="product-content">
+                                    <h6 class="product-name"><a href="/urunler/@item.Slug">@item.Title</a></h6>
+                                    <a class="product-add" href="/urunler/@item.Slug">
+                                        <span>Ürüne Git</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

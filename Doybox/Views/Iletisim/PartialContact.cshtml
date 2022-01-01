@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.ContactInformation>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 col-lg-4">
+            <div class="contact-card">
+                <i class="icofont-location-pin"></i>
+                <h4>Adres</h4>
+                <p>@item.Address</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="contact-card active">
+                <i class="icofont-phone"></i>
+                <h4>Telefon numarası</h4>
+                <p><a href="tel:@item.Phone">Ara - @item.Phone</a></p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="contact-card">
+                <i class="icofont-email"></i>
+                <h4>Mail</h4>
+                <p><a href="mailto:@item.Email">Doybox Mail</a></p>
+            </div>
+        </div>
+    }
+
+</div>

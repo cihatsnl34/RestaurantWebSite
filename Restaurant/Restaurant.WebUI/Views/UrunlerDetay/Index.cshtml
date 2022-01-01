@@ -1,0 +1,166 @@
+﻿@model Restaurant.Entity.Entity.Product
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{Html.RenderAction("PartialProductDetayConstantValue", "UrunlerDetay");}
+<section class="inner-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="details-gallery">
+                    <ul class="details-preview">
+                        @foreach (var item in Model.ProductFiles)
+                        {
+                            <li><img src="~/File/ProductFiles/@item.File" alt="@Model.Title"></li>
+                        }
+
+
+                    </ul>
+
+                    <ul class="details-thumb">
+                        @foreach (var item in Model.ProductFiles)
+                        {
+                            <li><img src="~/File/ProductFiles/@item.File" alt="@Model.Title"></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+
+                <div class="details-content">
+                    <h3 class="details-name"><a class="renk" href="/kategoriler/@Model.ProductCategory.Slug">@Model.ProductCategory.Title/@Model.Title</a></h3>
+                    <p class="details-desc">
+                        @Html.Raw(Model.Description)
+                    </p>
+                    <div class="view-list-group">
+                        <label class="view-list-title">Kategori:</label>
+                        <ul class="view-tag-list">
+                            <li><a href="/kategoriler/@Model.ProductCategory.Slug">@Model.ProductCategory.Title</a></li>
+                        </ul>
+                    </div>
+                    <div class="view-list-group">
+                        <label class="view-list-title">Paylaş:</label>
+                        <ul class="view-share-list">
+                            <li><a href="https://www.facebook.com/sharer/sharer.php?u=@Request.Url" target="_blank" class="icofont-facebook" title="Facebook"></a></li>
+                            <li><a href="https://twitter.com/share?url=@Request.Url&text=@Html.Raw(Model.Description)" target="_blank"class="icofont-twitter" title="Twitter"></a></li>
+                            <li><a href="http://www.linkedin.com/shareArticle?url=@Request.Url" target="_blank" class="icofont-linkedin" title="Linkedin"></a></li>
+                            <li><a href="http://pinterest.com/pin/create/button/?url=@Request.Url&media=~/File/Products/@Model.File&description=@Html.Raw(Model.Description)" target="_blank" class="icofont-pinterest" title="Pinterest"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="inner-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav nav-tabs">
+
+                    <li><a href="#tab-spec" class="tab-link active" data-bs-toggle="tab">Besin Değerleri (100 gr için)</a></li>
+                    <li><a href="#tab-reve" class="tab-link" data-bs-toggle="tab">Saklama Koşulları</a></li>
+                    <li><a href="#tab-revee" class="tab-link" data-bs-toggle="tab">Servis Önerisi</a></li>
+                    <li><a href="#tab-reveee" class="tab-link" data-bs-toggle="tab">İçindekiler</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-pane active" id="tab-spec">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product-details-frame">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Enerji</th>
+                                    <td>@Model.Energy</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Yağ</th>
+                                    <td>@Model.Yag</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Doymus Yağ</th>
+                                    <td>@Model.DoymusYag</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Karbonhidrat</th>
+                                    <td>@Model.Karbonhidrat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Protein</th>
+                                    <td>@Model.Protein</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tuz</th>
+                                    <td>@Model.Tuz</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Şeker</th>
+                                    <td>@Model.Sugar</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Alerjen</th>
+                                    <td>@Model.Allergen</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Mensei</th>
+                                    <td>@Model.Mensei</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Kayıt No</th>
+                                    <td>@Model.KayıtNo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Net Gram</th>
+                                    <td>@Model.NetGram</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab-reve">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product-details-frame">
+                        <div class="tab-descrip">
+                            <p>
+                                @Model.StorageCondition
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab-revee">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product-details-frame">
+                        <div class="tab-descrip">
+                            <p>
+                                @Model.ServiceReco
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab-reveee">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product-details-frame">
+                        <div class="tab-descrip">
+                            <p>
+                                @Model.ProductIndex
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

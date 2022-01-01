@@ -1,0 +1,13 @@
+C:\Users\PC\Documents\GitHub\RestaurantWebSite\Restaurant\Restaurant.Entity\bin\Release\Restaurant.Entity.dll.config
+C:\Users\PC\Documents\GitHub\RestaurantWebSite\Restaurant\Restaurant.Entity\bin\Release\Restaurant.Entity.dll
+C:\Users\PC\Documents\GitHub\RestaurantWebSite\Restaurant\Restaurant.Entity\bin\Release\Restaurant.Entity.pdb
+C:\Users\PC\Documents\GitHub\RestaurantWebSite\Restaurant\Restaurant.Entity\bin\Release\EntityFramework.dll
+C:\Users\PC\Documents\GitHub\RestaurantWebSite\Restaurant\Restaurant.Entity\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\PC\Documents\GitHub\RestaurantWebSite\Restaurant\Restaurant.Entity\bin\Release\EntityFramework.xml
+C:\Users\PC\Documents\GitHub\RestaurantWebSite\Restaurant\Restaurant.Entity\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\PC\Documents\GitHub\RestaurantWebSite\Restaurant\Restaurant.Entity\obj\Release\Restaurant.Entity.csproj.AssemblyReference.cache
+C:\Users\PC\Documents\GitHub\RestaurantWebSite\Restaurant\Restaurant.Entity\obj\Release\Restaurant.Entity.csproj.CoreCompileInputs.cache
+C:\Users\PC\Documents\GitHub\RestaurantWebSite\Restaurant\Restaurant.Entity\obj\Release\Restaurant.Entity.csproj.CopyComplete
+C:\Users\PC\Documents\GitHub\RestaurantWebSite\Restaurant\Restaurant.Entity\obj\Release\Restaurant.Entity.dll
+C:\Users\PC\Documents\GitHub\RestaurantWebSite\Restaurant\Restaurant.Entity\obj\Release\Restaurant.Entity.pdb
+C:\Users\PC\Documents\GitHub\RestaurantWebSite\Restaurant\Restaurant.Entity\bin\Release\CKEditor.NET.dll

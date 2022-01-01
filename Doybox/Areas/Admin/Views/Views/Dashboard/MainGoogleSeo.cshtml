@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.MainGoogleSeo>
+
+@{
+    ViewBag.Title = "MainGoogleSeo";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <div class="card-box mb-30">
+        <h2 class="h4 pd-20">Main Google Seo Listele</h2>
+        <table class="data-table table nowrap">
+            <thead>
+                <tr>
+                    <th>Seo Başlık</th>
+                    <th>Sayfa</th>
+                    <th>Son İşlem Tarihi</th>
+                    <th>Büyük Açılır Menü</th>
+                    <th>Küçük Açılır Menü</th>
+                    <th>Aktif Durumu</th>
+                    <th class="datatable-nosort">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.seoTitle</td>
+                    <td>@item.PageUrl</td>
+                    <td>@item.LastDateTime.ToString("dd:MM:yyyy")</td>
+                    @if (item.LargeDropDown == true)
+                    {
+                        <td><span class="badge badge-success"><i class="fa fa-check"></i> Aktif</span></td>
+                    }
+                    else
+                    {
+                        <td><span class="badge badge-danger"><i class="fa fa-remove"></i> Pasif</span></td>
+                    }
+                    @if (item.SmallDropDown == true)
+                    {
+                        <td><span class="badge badge-success"><i class="fa fa-check"></i> Aktif</span></td>
+                    }
+                    else
+                    {
+                        <td><span class="badge badge-danger"><i class="fa fa-remove"></i> Pasif</span></td>
+                    }
+                    @if (item.IsActive == true)
+                    {
+                        <td><span class="badge badge-success"><i class="fa fa-check"></i> Aktif</span></td>
+                    }
+                    else
+                    {
+                        <td><span class="badge badge-danger"><i class="fa fa-remove"></i> Pasif</span></td>
+                    }
+                    <td>
+                        <div class="dropdown">
+                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                <i class="dw dw-more"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                <a class="dropdown-item" href="/Admin/Seo/UpdateSeo/@item.ID"><i class="dw dw-edit2"></i> Güncelle</a>
+                                <a class="dropdown-item" onclick="return confirm('Silmek istediğinize eminmisiniz ?')" href="/Admin/Seo/DeleteSeo/@item.ID"><i class="dw dw-delete-3"></i> Sil</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</form>

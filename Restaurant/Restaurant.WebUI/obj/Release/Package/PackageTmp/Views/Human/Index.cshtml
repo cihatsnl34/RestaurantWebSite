@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{Html.RenderAction("PartialBannerHumanResourcers", "Human");}
+<section class="inner-section contact-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <section class="inner-section about-company">
+                    <div class="container">
+                        @{Html.RenderAction("PartialHumanResources", "Human");}
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-6">
+                <form class="contact-form" action="/insan-kaynaklari" method="post" enctype="multipart/form-data">
+                    <h4>Bizimle çalışmak ister misiniz?</h4>
+                    @if (ViewBag.Mesaj != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                <h3>Mesaj Gönderimi Başarılı</h3>
+                                <p>@ViewBag.Mesaj</p>
+                            </div>
+                        </div>
+                    }
+                    @if (ViewBag.Hata != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-danger">
+                                <h3>Hata Mesajı</h3>
+                                <p>@ViewBag.Hata</p>
+                            </div>
+                        </div>
+                    }
+                    <div class="form-group">
+                        <div class="form-input-group">
+
+                            <input class="form-control" type="text"
+                                   placeholder="Adınız Soyadınız" name="NameSurname"><i class="icofont-user-alt-3"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-input-group">
+                            <input class="form-control" type="text"
+                                   placeholder="E-Mail Adresiniz" name="Email"><i class="icofont-email"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-input-group">
+                            <input class="form-control" type="tel"
+                                   placeholder="Telefon Numaranız" name="Phone"><i class="icofont-phone"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-input-group">
+                            <input class="form-control" type="text"
+                                   placeholder="İş Başvuru örn Genel İş Başvurusu" name="Subject"><i class="icofont-book-mark"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">CV(.pdf)</label><hr />
+                        <div class="form-input-group">
+                            <input class="form-control" type="file" name="File"><i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-input-group">
+                            <textarea class="form-control"
+                                      placeholder="Mesajınızı Giriniz" name="Messages"></textarea><i class="icofont-paragraph"></i>
+                        </div>
+                    </div><button type="submit" class="form-btn-group">
+                        <i class="fas fa-envelope"></i><span>
+                            CV Gönder
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

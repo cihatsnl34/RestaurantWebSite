@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.SSS>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{Html.RenderAction("PartialSSSConstantValue", "SıkcaSorulanSorular");}
+<section class="inner-section faq-part">
+    <div class="container">
+        <div class="col-lg-12">
+            <div class="section-heading">
+                <h2>Sıkça Sorulan Sorular</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <div class="faq-parent">
+                    @foreach (var item in Model)
+                    {
+                        <div class="faq-child">
+                            <div class="faq-que"><button>@item.Tittle</button></div>
+                            <div class="faq-ans">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <p class="yazi">
+                                            @Html.Raw(item.Content)
+                                        </p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <img class="sss" src="~/File/SSSs/@item.File"  alt="@item.Tittle"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .sss{
+        width:100%;
+    }
+</style>

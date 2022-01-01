@@ -1,0 +1,52 @@
+﻿@model Restaurant.Entity.Entity.News
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{Html.RenderAction("PartialHaberDetayConstantValue", "HaberDetay");}
+<section class="inner-section blog-standard">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="blog-card">
+                            <div class="blog-media">
+                                <a class="blog-img">
+                                    @if (Model.File.EndsWith(".PNG") || Model.File.EndsWith(".JPG") || Model.File.EndsWith(".JPEG") || Model.File.EndsWith(".GIF") || Model.File.EndsWith(".TIFF") || Model.File.EndsWith(".jpg") || Model.File.EndsWith(".png") || Model.File.EndsWith(".jpeg") || Model.File.EndsWith(".tiff") || Model.File.EndsWith(".gif"))
+                                    {
+                                        <img src="~/File/News/@Model.File"
+                                             alt="blog" width="100%">
+                                    }
+                                    else if (Model.File.EndsWith(".avi") || Model.File.EndsWith(".AVI") || Model.File.EndsWith(".mp4") || Model.File.EndsWith(".MP4") || Model.File.EndsWith(".mov") || Model.File.EndsWith(".MOV") || Model.File.EndsWith(".flv") || Model.File.EndsWith(".FLV") || Model.File.EndsWith(".mpg") || Model.File.EndsWith(".MPG") || Model.File.EndsWith(".mkv") || Model.File.EndsWith(".MKV"))
+                                    {
+                                        <video controls>
+                                            <source src="~/File/News/@Model.File" type="video/mp4">
+                                        </video>
+                                    }
+                                </a>
+                            </div>
+                            <div class="blog-content">
+                                <h4 class="blog-title">
+                                    @Model.Title
+                                </h4>
+                                <p class="blog-desc">
+                                    @Html.Raw(Model.Content)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-10 col-md-7 col-lg-5">
+                <div class="blog-widget">
+                    <h3 class="blog-widget-title" title="Doybox Haberler">Haberlerimiz</h3>
+                    <ul class="blog-widget-feed">
+                        @{Html.RenderAction("PartialRandomNewsList", "HaberDetay");}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

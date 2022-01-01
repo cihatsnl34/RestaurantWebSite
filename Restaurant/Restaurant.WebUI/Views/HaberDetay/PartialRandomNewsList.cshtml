@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.News>
+@foreach (var item in Model)
+{
+    <li>
+        <a class="blog-widget-media" href="/haberler/@item.Slug">
+            @if (item.File.EndsWith(".PNG") || item.File.EndsWith(".JPG") || item.File.EndsWith(".JPEG") || item.File.EndsWith(".GIF") || item.File.EndsWith(".TIFF") || item.File.EndsWith(".jpg") || item.File.EndsWith(".png") || item.File.EndsWith(".jpeg") || item.File.EndsWith(".tiff") || item.File.EndsWith(".gif"))
+            {
+                <img src="~/File/News/@item.File"
+                     alt="@item.Title">
+            }
+            else if (item.File.EndsWith(".avi") || item.File.EndsWith(".AVI") || item.File.EndsWith(".mp4") || item.File.EndsWith(".MP4") || item.File.EndsWith(".mov") || item.File.EndsWith(".MOV") || item.File.EndsWith(".flv") || item.File.EndsWith(".FLV") || item.File.EndsWith(".mpg") || item.File.EndsWith(".MPG") || item.File.EndsWith(".mkv") || item.File.EndsWith(".MKV"))
+            {
+                <video controls autoplay muted>
+                    <source src="~/File/News/@item.File" type="video/mp4">
+                </video>
+            }
+        </a>
+        <h6 class="blog-widget-text">
+            <a href="/haberler/@item.Slug">
+                @item.Title
+            </a>
+        </h6>
+    </li>
+}

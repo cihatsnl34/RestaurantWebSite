@@ -1,0 +1,135 @@
+﻿@model Restaurant.Entity.Entity.ConstantValue
+
+@{
+    ViewBag.Title = "AddConstantValue";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="title">
+                        <h3>Yeni Sabit Değer Ekle</h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 text-right">
+                    <img src="~/Areas/Admin/Context/mekasoftware/180x180-M.png" alt="Kadir ARİ" width="50" />
+                </div>
+            </div>
+        </div>
+        @if (ViewBag.Mesaj != null)
+        {
+            <div class="pd-20 card-box mb-30">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <h4 class="text-blue h4">Hata Mesajı</h4>
+                    </div>
+                </div>
+                <div>
+                    <p>@ViewBag.Mesaj</p>
+                </div>
+            </div>
+        }
+        <div class="pd-20 card-box mb-30">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <h4 class="text-blue h4">Yeni Sabit Değer Ekle</h4>
+                </div>
+            </div>
+            <!-- Buraya Form Kısmını Ekle -->
+            @using (Html.BeginForm("AddConstantValue", "ConstantValue", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Başlık</label>
+                <div class="col-md-12">
+                    <input type="text" name="Title" class="form-control"  placeholder="Lütfen Başlık Giriniz" maxlength="110" />
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Açıklama</label>
+                <div class="col-md-12">
+                    <textarea class="form-control" name="Content" maxlength="170" placeholder="Zorunlu Alan Değil"></textarea>
+                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Resim</label>
+                <div class="col-md-12">
+                    <input type="file" name="ImageUrl" required class="form-control" />
+                    <p style="color:darkred;">Anasayfa|Alan1 resim boyutu (1920x500) </p>
+                    <p style="color:darkred;">Anasayfa|Alan2 resim boyutu (600x300) </p>
+                    <p style="color:darkred;">Anasayfa|Alan3 resim boyutu (600x300) </p>
+                    <p style="color:darkred;">Banner resim boyutu (1920x650) </p>
+                    @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Resim Açıklama
+                </label>
+                <div class="col-md-12">
+                    <input type="text" name="ImageAlt" class="form-control" required placeholder="Lütfen Resim Açıklama Giriniz" maxlength="110" />
+                    @Html.ValidationMessageFor(model => model.ImageAlt, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Bölge Seçiniz</label>
+                <div class="col-md-12">
+                    <select class="custom-select2 form-control" required name="Code" style="width: 100%; height: 38px;">
+                        <optgroup label="Lütfen Bölge Seçiniz">
+                            <option value="Anasayfa|Alan1">Anasayfa|Alan1</option>
+                            <option value="Anasayfa|Alan2">Anasayfa|Alan2</option>
+                            <option value="Anasayfa|Alan3">Anasayfa|Alan3</option>
+                            <option value="Hakkımızda|Banner">Hakkımızda|Banner</option>
+                            <option value="Şirket Politikamız|Banner">Şirket Politikamız|Banner</option>
+                            <option value="Vizyonumuz|Banner">Vizyonumuz|Banner</option>
+                            <option value="Misyonumuz|Banner">Misyonumuz|Banner</option>
+                            <option value="Kategori|Banner">Kategori|Banner</option>
+                            <option value="Urunler|Banner">Urunler|Banner</option>
+                            <option value="Videolar|Banner">Videolar|Banner</option>
+                            <option value="Haber|Banner">Haber|Banner</option>
+                            <option value="Haber Detay|Banner">Haber Detay|Banner</option>
+                            <option value="Basında Biz|Banner">Basında Biz|Banner</option>
+                            <option value="Basında Biz Detay|Banner">Basında Biz Detay|Banner</option>
+                            <option value="Restaurant|Banner">Restaurant|Banner</option>
+                            <option value="SSS|Banner">SSS|Banner</option>
+                            <option value="Sağlıklı Beslen|Banner">Sağlıklı Beslen|Banner</option>
+                            <option value="UrunDetay|Banner">UrunDetay|Banner</option>
+                            <option value="KategoriDetay|Banner">KategoriDetay|Banner</option>
+                            <option value="İletişim|Banner">İletişim|Banner</option>
+                            <option value="Bilgi Al|Banner">Bilgi Al|Banner</option>
+                            <option value="İnsan Kaynakları|Banner">İnsan Kaynakları|Banner</option>
+                        </optgroup>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Sayfa Url</label>
+                <div class="col-md-12">
+                    <input type="text" name="url" class="form-control" placeholder="Lütfen Url Giriniz örn: /kategoriler/test | /hakkimizda | /iletisim" maxlength="110" />
+                    @Html.ValidationMessageFor(model => model.url, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" class="btn btn-outline-success"><i class="fa fa-check"></i> Yeni Sabit Değer Ekle</button>
+                        <a href="/Admin/Dashboard/ConstantValue" class="btn btn-outline-dark"><i class="fa fa-reply-all"></i> Listeye Geri Dön</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+            }
+            <!--Form bitiş-->
+        </div>
+    </div>
+</div>
+
+

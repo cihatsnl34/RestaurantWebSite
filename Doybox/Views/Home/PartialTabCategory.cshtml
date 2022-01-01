@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.ProductCategory>
+
+<section class="section niche-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav nav-tabs">
+                    <li>
+                        <a href="#hepsi" class="tab-link active" data-bs-toggle="tab">
+                            <span>Hepsi</span>
+                        </a>
+                    </li>
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            <a href="#@item.Slug" class="tab-link" data-bs-toggle="tab">
+                                <span>@item.Title</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane active" id="hepsi">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
+                @{Html.RenderAction("PartialProductList", "Home");}
+            </div>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="tab-pane" id="@item.Slug">
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
+                    @foreach (var item2 in item.Products.Where(x => x.IsActive == true && x.ProductCategoryID == item.ID).OrderBy(x => x.Rank).ToList().Take(8))
+                    {
+                        <div class="col">
+                            <div class="product-card">
+                                <div class="product-media">
+                                    <div class="product-label">@if (item2.Feature != null)
+                                    {<label class="label-text new">@item2.Feature</label>}</div><button class="product-wish wish">
+                                    </button>
+                                    <a class="product-image" href="/urunler/@item2.Slug">
+                                        <img src="~/File/Products/@item2.File"
+                                             alt="product">
+                                    </a>
+                                </div>
+                                <div class="product-content">
+
+                                    <h6 class="product-name">@item2.Title</h6>
+                                    <a class="product-add" href="/urunler/@item2.Slug">
+                                        <span>Ürüne Git</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</section>

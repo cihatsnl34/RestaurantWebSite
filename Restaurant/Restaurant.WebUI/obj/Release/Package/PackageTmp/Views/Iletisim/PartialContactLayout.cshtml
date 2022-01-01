@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.ContactInformation>
+<div class="col-sm-6 col-xl-3">
+    <div class="footer-widget contact">
+        <h3 class="footer-title">İletişim</h3>
+        @foreach (var item in Model)
+        {
+    <ul class="footer-contact">
+        <li>
+            <i class="icofont-ui-email"></i>
+            <p><span>@item.Email</span></p>
+        </li>
+        <li>
+            <i class="icofont-ui-touch-phone"></i>
+            <p><span>@item.Phone</span></p>
+        </li>
+        <li>
+            <i class="icofont-location-pin"></i>
+            <p>@item.Address</p>
+        </li>
+    </ul>
+        }
+        
+    </div>
+</div>

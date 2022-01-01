@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{Html.RenderAction("PartialProductConstantValue", "Urunler");}
+<section class="inner-section shop-part">
+    <div class="container">
+        <div class="row content-reverse">
+
+            <div class="col-lg-12">
+
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col">
+                            <div class="product-card">
+                                <div class="product-media">
+                                    <div class="product-label">@if (item.Feature != null)
+                                    {<label class="label-text new">@item.Feature</label>}</div><button class="product-wish wish">
+                                    </button>
+                                    <img src="~/File/Products/@item.File" alt="@item.Title">
+                                </div>
+                                <div class="product-content">
+
+                                    <h6 class="product-name">@item.Title</h6>
+
+                                    <button onclick="location.href='/urunler/@item.Slug'" class="product-add" title="Ürüne Git">
+                                        <i class="fas fa-shopping-basket"></i><span>Ürüne Git</span>
+                                        @*<a href="/urunler/@item.Slug" class="details-link" title="More Details"><i class="bx bx-link"></i></a>*@
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

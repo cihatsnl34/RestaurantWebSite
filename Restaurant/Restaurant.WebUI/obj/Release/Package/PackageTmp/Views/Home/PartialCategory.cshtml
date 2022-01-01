@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.Flavors>
+
+<section class="section brand-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading">
+                    <h2>Lezzetlerimiz</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="brand-slider slider-arrow">
+        @foreach (var item in Model)
+        {
+            <div class="brand-wrap">
+                <div class="brand-media">
+                    @if (item.kategoriUrl != null)
+                    {
+                        <a href="/kategoriler/@item.kategoriUrl">
+                            <img src="~/File/Flavors/@item.File" alt="@item.Title">
+                            <div class="brand-overlay"></div>
+                        </a>
+                    }
+                    @if (item.haberUrl != null)
+                    {
+                        <a href="/haberler/@item.haberUrl">
+                            <img src="~/File/Flavors/@item.File" alt="@item.Title">
+                            <div class="brand-overlay"></div>
+                        </a>
+                    }
+                    @if (item.urunUrl != null)
+                    {
+                        <a href="/urunler/@item.urunUrl">
+                            <img src="~/File/Flavors/@item.File" alt="@item.Title">
+                            <div class="brand-overlay"></div>
+                        </a>
+                    }
+                    @if (item.pageUrl != null)
+                    {
+                        if (item.pageUrl == "Anasayfa" || item.pageUrl == "anasayfa")
+                        {
+                            <a href="/">
+                                <img src="~/File/Flavors/@item.File" alt="@item.Title">
+                                <div class="brand-overlay"></div>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/@item.pageUrl">
+                                <img src="~/File/Flavors/@item.File" alt="@item.Title">
+                                <div class="brand-overlay"></div>
+                            </a>
+                        }
+                    }
+                    @if (item.basinUrl != null)
+                    {
+                        <a href="/basin-da-biz/@item.pageUrl">
+                            <img src="~/File/Flavors/@item.File" alt="@item.Title">
+                            <div class="brand-overlay"></div>
+                        </a>
+                    }
+                </div>
+                <div class="brand-meta">
+                    <h4>@item.Title</h4>
+                    <p>(@item.Content)</p>
+                </div>
+            </div>
+
+        }
+    </div>
+    
+</section>

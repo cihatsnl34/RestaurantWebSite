@@ -1,0 +1,5 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.ProductCategory>
+@foreach (var item in Model)
+{
+    <li><a href="/kategoriler/@item.Slug">@item.Title</a></li>
+}

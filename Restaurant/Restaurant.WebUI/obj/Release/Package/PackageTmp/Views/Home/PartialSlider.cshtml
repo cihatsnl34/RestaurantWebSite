@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.Slider>
+<section class="home-classic-slider slider-arrow">
+    @foreach (var item in Model)
+    {
+    <div class="banner-part banner-1" style="background-image:url(/File/Sliders/@item.File);">
+        @if (item.Left == true)
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="banner-content">
+                            <h1>@item.Title</h1>
+                            <p>
+                                @item.Description
+                            </p>
+                            @if (item.LezzetUrl != null)
+                            {
+                                <div class="banner-btn">
+                                    <a class="btn btn-outline" href="/kategoriler/@item.LezzetUrl">
+                                        <span>Detay Gör</span>
+                                    </a>
+                                </div>
+                            }
+                            @if (item.ProductUrl != null)
+                            {
+                                <div class="banner-btn">
+                                    <a class="btn btn-outline" href="/urunler/@item.ProductUrl">
+                                        <span>Detay Gör</span>
+                                    </a>
+                                </div>
+                            }
+                            @if (item.PageUrl != null)
+                            {
+                                if (item.PageUrl == "Anasayfa" || item.PageUrl == "anasayfa")
+                                {
+                                    <div class="banner-btn">
+                                        <a class="btn btn-outline" href="/">
+                                            <span>Detay Gör</span>
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="banner-btn">
+                                        <a class="btn btn-outline" href="/@item.PageUrl">
+                                            <span>Detay Gör</span>
+                                        </a>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (item.Center == true)
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-11 col-lg-7 mx-auto">
+                        <div class="banner-content text-center">
+                            <h1>@item.Title</h1>
+                            <p>
+                                @item.Description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (item.Right == true)
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-lg-6"></div>
+                    <div class="col-md-8 col-lg-6">
+                        <div class="banner-content">
+                            <h1>@item.Title</h1>
+                            <p>
+                                @item.Description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    }
+</section>

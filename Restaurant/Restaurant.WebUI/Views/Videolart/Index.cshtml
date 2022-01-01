@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.Video>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{Html.RenderAction("PartialVideoConstantValue", "Videolart");}
+<section class="section recent-part">
+    <div class="container">
+        <div class="row row-cols-2 row-cols-md-4 row-cols-lg-4 row-cols-xl-3">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="product-card">
+                        <div class="product-media">
+                            <a class="product-image"><img src="~/File/Videos/@item.File" alt="product"></a>
+                            <div class="product-widget">
+                                <a title="@item.File" href="@item.Url" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

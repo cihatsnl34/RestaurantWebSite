@@ -1,0 +1,109 @@
+﻿@model Restaurant.Entity.Entity.InformationMail
+
+@{
+    ViewBag.Title = "AddInformationMail";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="title">
+                        <h3>Yeni Mail Bilgi Ekle</h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 text-right">
+                    <img src="~/Areas/Admin/Context/mekasoftware/180x180-M.png" alt="Kadir ARİ" width="50" />
+                </div>
+            </div>
+        </div>
+        @if (ViewBag.Mesaj != null)
+        {
+            <div class="pd-20 card-box mb-30">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <h4 class="text-blue h4">Hata Mesajı</h4>
+                    </div>
+                </div>
+                <div>
+                    <p>@ViewBag.Mesaj</p>
+                </div>
+            </div>
+        }
+        <div class="pd-20 card-box mb-30">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <h4 class="text-blue h4">Yeni Mail Bilgi Ekle</h4>
+                </div>
+            </div>
+            <!-- Buraya Form Kısmını Ekle -->
+            @using (Html.BeginForm("AddInformationMail", "InformationMail", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Adınız ve Soyadınız</label>
+                        <div class="col-md-12">
+                            <input type="text" name="NameSurname" class="form-control" required placeholder="Lütfen Adınızı ve Soyadınızı Giriniz" maxlength="110" />
+                            @Html.ValidationMessageFor(model => model.NameSurname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Email</label>
+                        <div class="col-md-12">
+                            <input type="text" name="Email" class="form-control" required placeholder="Lütfen Email Giriniz" />
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Telefon</label>
+                        <div class="col-md-12">
+                            <input type="text" name="Phone" class="form-control" required placeholder="Lütfen Telefon Numarası Giriniz" />
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Konu</label>
+                        <div class="col-md-12">
+                            <input type="text" name="Subject" class="form-control" required placeholder="Lütfen Mesaj Konusu Giriniz" />
+                            @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Mesaj</label>
+                        <div class="col-md-12">
+                            <input type="text" name="Messages" class="form-control" required placeholder="Lütfen Mesaj Giriniz" />
+                            @Html.ValidationMessageFor(model => model.Messages, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="btn btn-outline-success"><i class="fa fa-check"></i> Yeni Mail Bilgi Ekle</button>
+                                <a href="/Admin/Dashboard/InformationMail" class="btn btn-outline-dark"><i class="fa fa-reply-all"></i> Listeye Geri Dön</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <!--Form bitiş-->
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Editor/ckeditor/ckeditor.js"></script>
+    <script src="~/Editor/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript">
+        var editor = CKEDITOR.instances['Messages'];
+        if (editor) { editor.destroy(true); }
+        CKEDITOR.replace('Messages', {
+            enterMode: CKEDITOR.ENTER_BR,
+        });
+    CKFinder.setupCKEditor(null, '@Url.Content("~/Editor/ckfinder/")');
+    </script>
+}

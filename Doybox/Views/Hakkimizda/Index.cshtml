@@ -1,0 +1,30 @@
+﻿@model Restaurant.Entity.Entity.About
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{Html.RenderAction("PartialHakkimizdaConstantValue", "Hakkimizda");}
+<section class="inner-section about-company">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="about-content">
+                    @if (Model.Title == "Bizim Hakkımızda")
+                    {
+                        <h2 title="Hakkımızda">Hakkımızda</h2>
+                    }
+                    <p title="@Html.Raw(Model.ShortDescription)">
+                        @Html.Raw(Model.Description)
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-img">
+                    <img src="~/File/Abouts/@Model.File" alt="@Model.Title">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

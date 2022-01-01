@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.BasindaBiz>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@{Html.RenderAction("PartialBasindaBizConstantValue", "BasindaBiz");}*@
+<section class="inner-section blog-grid">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4 col-lg-4">
+                            <div class="blog-card">
+                                <div class="blog-media">
+                                    <a class="blog-img" href="#">
+                                        @if (item.File.EndsWith(".PNG") || item.File.EndsWith(".JPG") || item.File.EndsWith(".JPEG") || item.File.EndsWith(".GIF") || item.File.EndsWith(".TIFF") || item.File.EndsWith(".jpg") || item.File.EndsWith(".png") || item.File.EndsWith(".jpeg") || item.File.EndsWith(".tiff") || item.File.EndsWith(".gif"))
+                                        {
+                                            <img src="~/File/BasindaBiz/@item.File"
+                                                 alt="blog">
+                                        }
+                                        else if (item.File.EndsWith(".avi") || item.File.EndsWith(".AVI") || item.File.EndsWith(".mp4") || item.File.EndsWith(".MP4") || item.File.EndsWith(".mov") || item.File.EndsWith(".MOV") || item.File.EndsWith(".flv") || item.File.EndsWith(".FLV") || item.File.EndsWith(".mpg") || item.File.EndsWith(".MPG") || item.File.EndsWith(".mkv") || item.File.EndsWith(".MKV"))
+                                        {
+                                            <video controls>
+                                                <source src="~/File/BasindaBiz/@item.File" type="video/mp4">
+                                            </video>
+                                        }
+                                    </a>
+
+                                </div>
+                                <div class="blog-content">
+
+                                    <h4 class="blog-title">
+                                        @item.Title
+                                    </h4>
+                                    <p class="blog-desc">
+                                        @item.ShortDescription
+                                    </p><a class="blog-btn"
+                                           href="/basin-da-biz/@item.Slug"><span>Devamını Oku</span><i class="icofont-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+

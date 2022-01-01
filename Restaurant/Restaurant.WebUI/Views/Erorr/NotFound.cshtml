@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <title>Hata Sayfası - Doybox GIDA SAN. TİCARET A.Ş.</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Doybox, Hazır Pişir Ye, Doybox Hazır Pişir Ye, Bursa Hazır Pişir Ye, Bursa Restaurant, Bursa Restaurant Hazır Pişir Ye" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link rel="icon" href="~/Content/Site/images/doybox.ico">
+    <!-- //for-mobile-apps -->
+    <link href="~/Content/Hata/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- font-awesome icons -->
+    <link href="~/Content/Hata/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //font-awesome icons -->
+    <link href="//fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <h1>Doybox GIDA SAN. TİCARET A.Ş.</h1>
+        <div class="w3layouts_main_grids">
+            <div class="w3_main_grid_left">
+                <div class="w3l_main_grid">
+                    <h2>HATA</h2>
+                </div>
+            </div>
+            <div class="w3_main_grid_right w3_agileits_grid_right">
+                <h3>Site içerisinde yapmış olduğunuz istek üzerine hata aldınız</h3>
+                <p>Sitemiz üzerinde işlemlerinze devam etmek için lütfen aşağıdaki yönlendirme butonlarını kullanarak işlemlerinize devam ediniz.</p>
+                @if (Session["AdminGiris"] == null)
+                {
+                    <div class="agileits_main_grid">
+                        <a class="buttons" href="/">Anasayfa</a>
+                        <a class="buttons" href="/hakkimizda">Hakkımızda</a>
+                        <a class="buttons" href="/iletisim">İletişim</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="agileits_main_grid">
+                        <a class="buttons" href="/Admin/Dashboard/Index">Anasayfa</a>
+                    </div>
+                }
+            </div>
+            <div class="clear"> </div>
+        </div>
+        <div class="agileits_copyright">
+            <p> © @DateTime.Now.Year Doybox Gıda San. Ticaret A.Ş. All Rights Reserved</p>
+        </div>
+    </div>
+</body>
+</html>

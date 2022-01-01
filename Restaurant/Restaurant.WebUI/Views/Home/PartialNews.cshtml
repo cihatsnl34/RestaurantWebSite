@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.News>
+@if (Model.Where(x => x.IsActive == true).Count() > 0)
+{
+    <section class="section blog-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-left">
+                        <h2>Bizden Haberler</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="blog-slider slider-arrow">
+                        @foreach (var item in Model)
+                        {
+                            <div class="blog-card">
+                                <div class="blog-media">
+                                    <a class="blog-img" href="/haberler/@item.Slug">
+                                        <img src="~/File/News/@item.File">
+                                    </a>
+                                </div>
+                                <div class="blog-content">
+                                    <h4 class="blog-title">
+                                        @item.Title
+                                    </h4>
+
+                                    <button onclick="location.href='/haberler/@item.Slug'" class="blog-btn" title="Daha fazla oku">
+                                        <i class="icofont-arrow-right"></i><span>Daha fazla oku</span>
+
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-btn-25">
+                        <a href="/haber" class="btn btn-outline">
+                            <i class="fas fa-eye"></i><span>Devamını Gör</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

@@ -1,0 +1,159 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.MainGoogleSeo>
+<nav class="navbar-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="navbar-content">
+                    <ul class="navbar-list">
+                        <li class="navbar-item">
+                            <a class="navbar-link"
+                               href="/">Anasayfa</a>
+                        </li>
+                        <li class="navbar-item dropdown">
+                            <a class="navbar-link dropdown-arrow" href="#">Kurumsal</a>
+                            <ul class="dropdown-position-list">
+                                @foreach (var item2 in Model)
+                                {
+                                    if (item2.PageUrl == "Hakkımızda")
+                                    {
+                                        <li><a href="/hakkimizda">@item2.PageName</a></li>
+                                    }
+                                    if (item2.PageUrl == "Şirket Politikamız")
+                                    {
+                                        <li><a href="/sirket-politikamiz">@item2.PageName</a></li>
+                                    }
+                                    if (item2.PageUrl == "Vizyonumuz")
+                                    {
+                                        <li><a href="/vizyonumuz">@item2.PageName</a></li>
+                                    }
+                                    if (item2.PageUrl == "Misyonumuz")
+                                    {
+                                        <li><a href="/misyonumuz">@item2.PageName</a></li>
+                                    }
+                                    if (item2.PageUrl == "Bilgi Al")
+                                    {
+                                        <li><a href="/bilgi-al">@item2.PageName</a></li>
+                                    }
+                                    if (item2.PageUrl == "İnsan Kaynakları")
+                                    {
+                                        <li><a href="/insan-kaynaklari">@item2.PageName</a></li>
+                                    }
+                                    if (item2.PageUrl == "Bizden Haberler")
+                                    {
+                                        <li><a href="/haber">@item2.PageName</a></li>
+                                    }
+                                    if (item2.PageUrl == "Basında Biz")
+                                    {
+                                        <li><a href="/basin-da-biz">@item2.PageName</a></li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+                        @foreach (var item in Model)
+                        {
+                            if (item.PageUrl == "Lezzetlerimiz")
+                            {
+                                if (item.SmallDropDown == true)
+                                {
+                                    <li class="navbar-item dropdown">
+                                        <a class="navbar-link dropdown-arrow" href="#">Lezzetlerimiz</a>
+                                        <ul class="dropdown-position-list">
+                                            @{Html.RenderAction("PartialMobileMenuCategoryList", "Home");}
+                                        </ul>
+                                    </li>
+                                }
+                                else if (item.LargeDropDown == true)
+                                {
+                                    <li class="navbar-item dropdown-megamenu">
+                                        <a class="navbar-link dropdown-arrow"
+                                           href="#">Lezzetlerimiz</a>
+                                        <div class="megamenu">
+                                            <div class="container">
+                                                <div class="row row-cols-4">
+                                                    @{Html.RenderAction("PartialHeaderLezzetlerimizCateogryList", "Home");}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="navbar-item">
+                                        <a class="navbar-link"
+                                           href="/lezzetlerimiz">Lezzetlerimiz</a>
+                                    </li>
+                                }
+                            }
+
+                            if (item.PageUrl == "Sağlıklı Beslen")
+                            {
+                                if (item.SmallDropDown == false)
+                                {
+                                    <li class="navbar-item">
+                                        <a class="navbar-link"
+                                           href="/saglikli-beslen">@item.PageName</a>
+                                    </li>
+                                }
+                                else if (item.SmallDropDown == true)
+                                {
+                                    <li class="navbar-item dropdown">
+                                        <a class="navbar-link dropdown-arrow" href="#">Sağlıklı Beslen</a>
+                                        <ul class="dropdown-position-list">
+                                            @{Html.RenderAction("PartialHeaderSaglikliBeslen", "Home");}
+                                        </ul>
+                                    </li>
+                                }
+                            }
+
+
+                            if (item.PageUrl == "Restaurant")
+                            {
+                                if (item.SmallDropDown == false)
+                                {
+                                    <li class="navbar-item">
+                                        <a class="navbar-link"
+                                           href="/edt">@item.PageName</a>
+                                    </li>
+                                }
+                                else if (item.SmallDropDown == true)
+                                {
+                                    <li class="navbar-item dropdown">
+                                        <a class="navbar-link dropdown-arrow" href="#">Restaurant</a>
+                                        <ul class="dropdown-position-list">
+                                            @{Html.RenderAction("PartialHeaderRestaurantList", "Home");}
+                                        </ul>
+                                    </li>
+                                }
+                            }
+
+                            if (item.PageUrl == "Sıkça Sorulan Sorular")
+                            {
+                                <li class="navbar-item">
+                                    <a class="navbar-link"
+                                       href="/sss">S.S.S</a>
+                                </li>
+                            }
+
+                            if (item.PageUrl == "İletişim")
+                            {
+                                <li class="navbar-item">
+                                    <a class="navbar-link"
+                                       href="/iletisim">@item.PageName</a>
+                                </li>
+                            }
+
+                            if (item.PageUrl == "Katalog")
+                            {
+                                <li class="navbar-item">
+                                    <a class="navbar-link"
+                                       href="~/File/Seo/@item.File" target="_blank">@item.PageName</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

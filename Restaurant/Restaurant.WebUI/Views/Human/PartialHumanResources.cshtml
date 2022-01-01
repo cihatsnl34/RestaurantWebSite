@@ -1,0 +1,25 @@
+﻿@model Restaurant.Entity.Entity.About
+<div class="row align-items-center">
+    <div class="about-content">
+        <img src="~/File/Abouts/@Model.File" alt="@Model.FileAlt" />
+        <h2>@Model.Title</h2>
+        <p>
+            @Html.Raw(Model.Description)
+        </p>
+    </div>
+</div>
+<style>
+    .about-content img{
+        display:block;
+        margin:auto;
+        width:300px;
+        height:300px;
+        margin-bottom:15px;
+    }
+    .about-content h2{
+        text-align:center;
+    }
+    .about-content p{
+        text-align:justify;
+    }
+</style>

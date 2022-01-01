@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.MainGoogleSeo>
+<aside class="category-sidebar">
+    <div class="category-header">
+        <h4 class="category-title"><i class="fas fa-align-left"></i><span>Menü</span></h4><button class="category-close">
+            <i class="icofont-close"></i>
+        </button>
+    </div>
+    <ul class="category-list">
+        <li class="category-item">
+            <a class="category-link" href="/">
+                <i class="fas fa-home"></i><span>Anasayfa</span>
+            </a>
+        </li>
+        <li class="category-item">
+            <a class="category-link dropdown-link">
+                <i class="fas fa-server"></i><span>Kurumsal</span>
+            </a>
+            <ul class="dropdown-list">
+                @foreach (var item in Model)
+                {
+                    if (item.PageUrl == "Hakkımızda")
+                    {
+                        <li><a href="/hakkimizda">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "Şirket Politikamız")
+                    {
+                        <li><a href="/sirket-politikamiz">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "Vizyonumuz")
+                    {
+                        <li><a href="/vizyonumuz">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "Misyonumuz")
+                    {
+                        <li><a href="/misyonumuz">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "İletişim")
+                    {
+                        <li><a href="/iletisim">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "Bilgi Al")
+                    {
+                        <li><a href="/bilgi-al">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "İnsan Kaynakları")
+                    {
+                        <li><a href="/insan-kaynaklari">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "Bizden Haberler")
+                    {
+                        <li><a href="/haber">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "Basında Biz")
+                    {
+                        <li><a href="/haber">@item.PageName</a></li>
+                    }
+                }
+            </ul>
+        </li>
+
+        <li class="category-item">
+            <a class="category-link dropdown-link">
+                <i class="fas fa-folder-open"></i><span>Lezzetlerimiz</span>
+            </a>
+            <ul class="dropdown-list">
+                @{Html.RenderAction("PartialMobileMenuCategoryList", "Home");}
+            </ul>
+        </li>
+        @foreach (var item in Model)
+        {
+            if (item.PageUrl == "Sağlıklı Beslen")
+            {
+                <li class="category-item">
+                    <a class="category-link" href="/saglikli-beslen">
+                        <i class="fas fa-heart"></i><span>@item.PageName</span>
+                    </a>
+                </li>
+            }
+
+            if (item.PageUrl == "Katalog")
+            {
+                <li class="category-item">
+                    <a class="category-link" href="~/File/Seo/@item.File" target="_blank">
+                        <i class="fas fa-arrow-alt-circle-right"></i><span>@item.PageName</span>
+                    </a>
+                </li>
+            }
+
+            if (item.PageUrl == "Sıkça Sorulan Sorular")
+            {
+                <li class="category-item">
+                    <a class="category-link" href="/sss">
+                        <i class="fas fa-question"></i><span>@item.PageName</span>
+                    </a>
+                </li>
+            }
+            if (item.PageUrl == "Restaurant")
+            {
+                <li class="category-item">
+                    <a class="category-link" href="/edt">
+                        <i class="fas fa-tasks"></i><span>@item.PageName</span>
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+    <div class="category-footer">
+        <p>All Rights Reserved by <a href="/">Doybox</a></p>
+    </div>
+</aside>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.SocialMedia>
+
+@{
+    ViewBag.Title = "SocialMedia";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card-box mb-30">
+    <h2 class="h4 pd-20">Sosyal Medya Listele</h2>
+    <table class="data-table table nowrap">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>URL</th>
+                <th>Icon</th>
+                <th>Son Güncelleme Tarihi</th>
+                <th>Aktif Durumu</th>
+                <th class="datatable-nosort">İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Url</td>
+                    <td>@item.Icon</td>
+                    <td>@item.LastDateTime.ToString("dd:MM:yyyy")</td>
+                    @if (item.IsActive == true)
+                    {
+                        <td><span class="badge badge-success">Aktif</span></td>
+                    }
+                    else
+                    {
+                        <td><span class="badge badge-danger">Pasif</span></td>
+                    }
+                    <td>
+                        <div class="dropdown">
+                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                <i class="dw dw-more"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                <a class="dropdown-item" href="/Admin/SocialMedia/UpdateSocialMedia/@item.ID"><i class="dw dw-edit2"></i> Düzenle</a>
+                                <a class="dropdown-item" onclick="return confirm('Silmek istediğinize eminmisiniz ?')" href="/Admin/SocialMedia/DeleteSocialMedia/@item.ID"><i class="dw dw-delete-3"></i> Sil</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

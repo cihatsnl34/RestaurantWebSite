@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.MainGoogleSeo>
+@if (Model.Count() > 0)
+{
+    <div class="col-sm-6 col-xl-3">
+    <div class="footer-widget">
+        <h3 class="footer-title">Sayfalar</h3>
+        <div class="footer-links">
+            <ul>
+                @foreach (var item in Model)
+                {
+                    if (item.PageUrl == "Hakkımızda")
+                    {
+                        <li><a href="/hakkimizda">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "Şirket Politikamız")
+                    {
+                        <li><a href="/sirket-politikamiz">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "Vizyonumuz")
+                    {
+                        <li><a href="/vizyonumuz">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "Misyonumuz")
+                    {
+                        <li><a href="/misyonumuz">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "İletişim")
+                    {
+                        <li><a href="/iletisim">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "Bilgi Al")
+                    {
+                        <li><a href="/bilgi-al">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "İnsan Kaynakları")
+                    {
+                        <li><a href="/insan-kaynaklari">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "Bizden Haberler")
+                    {
+                        <li><a href="/haber">@item.PageName</a></li>
+                    }
+                    if (item.PageUrl == "Basında Biz")
+                    {
+                        <li><a href="/haber">@item.PageName</a></li>
+                    }
+                }
+
+            </ul>
+        </div>
+    </div>
+</div>
+}

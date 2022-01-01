@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.Seo.seoTitle</title>
+    <meta name="title" content="@ViewBag.Seo.seoTitle" />
+    <meta name="description" content="@ViewBag.Seo.seoKDescription" />
+    <meta name="abstract" content="@ViewBag.Seo.seoKeywords" />
+    <meta name="keywords" content="@ViewBag.Seo.seoKeywords" />
+    <meta name="author" content="@ViewBag.Seo.seoAuthor" />
+    <meta name="copyright" content="@ViewBag.Seo.seoCopyright" />
+    <meta name="designer" content="@ViewBag.Seo.seoDesigner" />
+    <meta name="publisher" content="@ViewBag.Seo.seoPublisher" />
+    <meta name="rating" content="BİDAA-DOYBOX" />
+    <meta name="classification" content="@ViewBag.Seo.seoClassification" />
+    <meta name="url" content="@Request.Url" />
+    <meta name="subject" content="@ViewBag.Seo.seoSubject" />
+    <meta name="generator" content="BİDAA-DOYBOX, MEKASOFTECH, MEKASOFTWARE YAZILIM BİLİŞİM SİSTEMLERİ, Cihat Şenel,Melis Kula, Bünyamin Çalışkan" />
+    <meta name="reply-to" content="@ViewBag.Seo.seoReply" />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:url" content="@ViewBag.Seo.seoFacebookUrl" />
+    <meta property="og:title" content="@ViewBag.Seo.seoFacebookTitle" />
+    <meta property="og:description" content="@ViewBag.Seo.seoFacebookDescription" />
+    <meta property="og:image" content="~/Content/Site/160x70.PNG" />
+    <meta property="twitter:url" content="@ViewBag.Seo.seoTwitterUrl" />
+    <meta property="twitter:title" content="@ViewBag.Seo.seoTwitterTitle" />
+    <meta property="twitter:description" content="@ViewBag.Seo.seoTwitterDescription" />
+    <link rel="icon" href="~/Content/Site/images/doybox.ico">
+    <link rel="stylesheet" href="~/Content/Site/fonts/flaticon/flaticon.css">
+    <link rel="stylesheet" href="~/Content/Site/fonts/icofont/icofont.min.css">
+    <link rel="stylesheet" href="~/Content/Site/fonts/fontawesome/fontawesome.min.css">
+    <link rel="stylesheet" href="~/Content/Site/css/vendor/nice-select.min.css">
+    <link rel="stylesheet" href="~/Content/Site/css/vendor/venobox.min.css">
+    <link rel="stylesheet" href="~/Content/Site/css/vendor/slick.min.css">
+    <link rel="stylesheet" href="~/Content/Site/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/Site/css/custom/main.css">
+    <link rel="stylesheet" href="~/Content/Site/css/custom/home-classic.css">
+    <link rel="stylesheet" href="~/Content/Site/css/custom/error.css">
+    <link rel="stylesheet" href="~/Content/Site/css/custom/faq.css">
+    <link rel="stylesheet" href="~/Content/Site/css/custom/about.css">
+    <link rel="stylesheet" href="~/Content/Site/css/custom/contact.css">
+    <link rel="stylesheet" href="~/Content/Site/css/custom/home-category.css">
+    <link rel="stylesheet" href="~/Content/Site/css/custom/product-details.css">
+    <link rel="stylesheet" href="~/Content/Site/css/custom/blog-details.css">
+    <link rel="stylesheet" href="~/Content/Site/css/custom/blog-grid.css">
+    <link rel="stylesheet" href="~/Content/Site/css/custom/product-details.css">
+</head>
+
+<body>
+    <div class="backdrop"></div>
+
+    <section class="header-part">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-media-group" style="text-align:center !important">
+                    <a href="/"><img src="~/Content/Site/images/doybox_logo.png" alt="Doybox"></a>
+                </div>
+                <a href="/" class="header-logo"><img src="~/Content/Site/images/doybox_logo.png" alt="Doybox"></a>
+
+            </div>
+        </div>
+    </section>
+
+    @{Html.RenderAction("PartialHeaderMenuList", "Home");}
+    <menu class="mobile-menu">
+        <button class="cate-btn" title="Category List">
+            <i class="fas fa-list"></i><span>Menü</span>
+        </button>
+        <a href="/" title="Home Page">
+            <i class="fas fa-home"></i><span>Anasayfa</span>
+        </a>
+        <a href="/hakkimizda" title="Home Page">
+            <i class="fas fa-piggy-bank"></i><span>Hakkımızda</span>
+        </a>
+        <a href="/sss" title="Home Page">
+            <i class="fas fa-question"></i><span>SSS</span>
+        </a>
+        <a href="/iletisim" title="Home Page">
+            <i class="fas fa-phone"></i><span>İletişim</span>
+        </a>
+    </menu>
+    @{Html.RenderAction("PartialMobileMenuList", "Home");}
+    @RenderBody()
+    <footer class="footer-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="footer-widget">
+                        <a class="footer-logo" href="/">
+                            <img src="~/Content/Site/images/doybox_logo-2.png"
+                                 alt="Doybox">
+                        </a>
+                        @{Html.RenderAction("PartialAboutFooter", "Home");}
+                        @{Html.RenderAction("PartialSocialMedia", "SosyalMedya");}
+                    </div>
+                </div>
+                @{Html.RenderAction("PartialContactLayout", "Iletisim");}
+                @{Html.RenderAction("PartialFooterMenuList", "Home");}
+                <div class="col-sm-6 col-xl-3">
+                    <div class="footer-widget">
+                        <h3 class="footer-title">Lezzetlerimiz</h3>
+                        <div class="footer-links">
+                            <ul>
+                                @{Html.RenderAction("PartialFooterMenuCategoryList", "Home");}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-bottom">
+                        <p class="footer-copytext">
+                            &copy; All Copyrights Reserved by <a target="_blank"
+                                                                 href="/">Doybox Gıda San. Ticaret A.Ş.</a>
+                        </p>
+                        <div class="credits">
+                            <img src="~/Content/Site/images/doybox_logo.png" width="150" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/Content/Site/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/Content/Site/js/vendor/popper.min.js"></script>
+    <script src="~/Content/Site/js/vendor/bootstrap.min.js"></script>
+    <script src="~/Content/Site/js/vendor/nice-select.min.js"></script>
+    <script src="~/Content/Site/js/vendor/venobox.min.js"></script>
+    <script src="~/Content/Site/js/vendor/countdown.min.js"></script>
+    <script src="~/Content/Site/js/vendor/slick.min.js"></script>
+    <script src="~/Content/Site/js/custom/nice-select.js"></script>
+    <script src="~/Content/Site/js/custom/countdown.js"></script>
+    <script src="~/Content/Site/js/custom/accordion.js"></script>
+    <script src="~/Content/Site/js/custom/venobox.js"></script>
+    <script src="~/Content/Site/js/custom/slick.js"></script>
+    <script src="~/Content/Site/js/custom/main.js"></script>
+</body>
+
+</html>

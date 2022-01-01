@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.ProductCategory>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{Html.RenderAction("PartialKategoriConstantValue", "Kategori");}
+<section class="section brand-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Lezzetlerimiz</h2>
+                </div>
+            </div>
+        </div>
+        <div class="brand-slider slider-arrow">
+            @foreach (var item in Model)
+            {
+                <div class="brand-wrap">
+                    <div class="brand-media">
+                        <a href="/kategoriler/@item.Slug">
+                            <img src="~/File/ProductCategorys/@item.File" alt="@item.Title">
+                            <div class="brand-overlay"></div>
+                        </a>
+                    </div>
+                    <div class="brand-meta">
+                        <h4>@item.Title</h4>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</section>

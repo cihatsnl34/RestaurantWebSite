@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{Html.RenderAction("PartialSlider", "Home");}
+@{Html.RenderAction("PartialCategory", "Home");}
+@{Html.RenderAction("PartialTabCategory", "Home");}
+@{Html.RenderAction("PartialConstantValue1", "Home");}
+@{Html.RenderAction("PartialVideoList", "Home");}
+<div class="section promo-part">
+    <div class="container">
+        <div class="row">
+            @{Html.RenderAction("PartialConstantValue2", "Home");}
+            @{Html.RenderAction("PartialConstantValue3", "Home");}
+        </div>
+    </div>
+</div>
+@{Html.RenderAction("PartialNews", "Home");}

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.Product>
+@foreach (var item in Model)
+{
+    <div class="col">
+        <div class="product-card">
+            <div class="product-media">
+                <div class="product-label">
+                    @if (item.Feature != null)
+                    {<label class="label-text new">@item.Feature</label>}
+            </div><button class="product-wish wish">
+            </button>
+            <a class="product-image" href="/urunler/@item.Slug">
+                <img src="~/File/Products/@item.File"
+                     alt="product">
+            </a>
+            </div>
+            <div class="product-content">
+
+                <h6 class="product-name">@item.Title</h6>
+                <a class="product-add" href="/urunler/@item.Slug">
+                    <span>Ürüne Git</span>
+                </a>
+            </div>
+        </div>
+    </div>
+}

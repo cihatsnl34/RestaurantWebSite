@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Restaurant.Entity.Entity.ProductCategory>
+@foreach (var item in Model)
+{
+    <div class="col">
+        <div class="megamenu-wrap">
+            <h5 class="megamenu-title">@item.Title</h5>
+            <ul class="megamenu-list">
+                @foreach (var item2 in item.Products.Where(x => x.IsActive == true && x.ProductCategoryID == item.ID).ToList().Take(5).OrderBy(x=>x.Rank))
+                {
+                    <li><a href="/urunler/@item2.Slug">@item2.Title</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+}

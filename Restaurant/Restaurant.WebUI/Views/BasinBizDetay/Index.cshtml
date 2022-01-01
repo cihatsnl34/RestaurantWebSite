@@ -1,0 +1,39 @@
+﻿@model Restaurant.Entity.Entity.BasindaBiz
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*@{Html.RenderAction("PartialBasindaBizDetayConstantValue", "BasinBizDetay");}*@
+<section class="inner-section blog-details-part">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 col-xl-10">
+                <article class="blog-details">
+                    <a class="blog-details-thumb">
+                        @if (Model.File.EndsWith(".PNG") || Model.File.EndsWith(".JPG") || Model.File.EndsWith(".JPEG") || Model.File.EndsWith(".GIF") || Model.File.EndsWith(".TIFF") || Model.File.EndsWith(".jpg") || Model.File.EndsWith(".png") || Model.File.EndsWith(".jpeg") || Model.File.EndsWith(".tiff") || Model.File.EndsWith(".gif"))
+                        {
+                            <img src="~/File/BasindaBiz/@Model.File"
+                                 alt="blog">
+                        }
+                        else if (Model.File.EndsWith(".avi") || Model.File.EndsWith(".AVI") || Model.File.EndsWith(".mp4") || Model.File.EndsWith(".MP4") || Model.File.EndsWith(".mov") || Model.File.EndsWith(".MOV") || Model.File.EndsWith(".flv") || Model.File.EndsWith(".FLV") || Model.File.EndsWith(".mpg") || Model.File.EndsWith(".MPG") || Model.File.EndsWith(".mkv") || Model.File.EndsWith(".MKV"))
+                        {
+                            <video controls>
+                                <source src="~/File/BasindaBiz/@Model.File" type="video/mp4">
+                            </video>
+                        }
+                    </a>
+                    <div class="blog-details-content">
+
+                        <h2 class="blog-details-title">
+                            @Model.Title
+                        </h2>
+                        <p class="blog-details-desc">
+                            @Model.Content
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
